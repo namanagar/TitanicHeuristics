@@ -70,11 +70,19 @@ function threevar(pass){
       pass.ourPrediction = 0;
     }
 }
-
+function myGuess(pass){
+  if (pass.sibsp + pass.parch > 1 && pass.sibsp + pass.parch < 5){
+    pass.ourPrediction = 1;
+  }
+  else if (pass.sex == 0){
+    pass.ourPrediction = 1;
+  }
+  else pass.ourPrediction = 0;
+}
 function test(titanictrain){
   var score = 0;
   for (obj in titanictrain){
-    threevar(titanictrain[obj]);
+    myGuess(titanictrain[obj]);
     }
   for (obj in titanictrain){
     if (titanictrain[obj].ourPrediction == titanictrain[obj].survived)
